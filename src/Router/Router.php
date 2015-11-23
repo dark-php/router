@@ -16,7 +16,7 @@ class Router
      * @return void
      * @throws \DI\NotFoundException
      */
-    public static function map($method, $uri, $action) {
+    public static function map(string $method, string $uri, string $action) {
         $route = new Route($method, $uri, $action);
         self::$container->get('routeCollection')->add($route);
     }
@@ -28,7 +28,7 @@ class Router
      * @throws \DI\NotFoundException
      * @throws \Exception
      */
-    public static function match($method, $uri)
+    public static function match(string $method, string $uri)
     {
         // Iterate routes
         foreach (self::$container->get('routeCollection')->items as $route) {

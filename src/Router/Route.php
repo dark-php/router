@@ -40,7 +40,7 @@ class Route
      * @param string $uri
      * @param string $action
      */
-    public function __construct($method, $uri, $action)
+    public function __construct(string $method, string $uri, string $action)
     {
         $this->uri = $uri;
         $this->method = $method;
@@ -67,7 +67,7 @@ class Route
         $this->regex = '/^'.$regex.'$/';
     }
 
-    public function __call($name, $arguments)
+    public function __call($name, $arguments): mixed
     {
         if(is_callable(array($this, $name))) {
             return call_user_func_array($this->action, $arguments);
