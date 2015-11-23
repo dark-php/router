@@ -60,7 +60,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-version]: https://img.shields.io/packagist/v/darktec/router.svg?style=flat-square
 [ico-license]: https://img.shields.io/packagist/l/darktec/router.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/darktec/router/1.0.0.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/darktec/router/master.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/darktec/router.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/darktec/router
