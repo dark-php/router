@@ -1,0 +1,38 @@
+{
+  "name": "darktec/router",
+  "type": "library",
+  "description": "Routing package for PHP 7",
+  "keywords": [
+    "routing",
+    "route",
+    "router",
+    "php7"
+  ],
+  "homepage": "https://github.com/darktec/router",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "David Hopson",
+      "email": "mantle@hotmail.co.uk",
+      "homepage": "http://github.com/darkmantle",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7",
+    "darktec/util": "1.0.*",
+    "php-di/php-di": "^5.1",
+    "doctrine/cache": "1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.0.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Darktec\\": "src"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  }
+}
