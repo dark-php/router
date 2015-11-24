@@ -38,9 +38,9 @@ class Route
      *
      * @param string $method
      * @param string $uri
-     * @param string $action
+     * @param mixed $action
      */
-    public function __construct(string $method, string $uri, string $action)
+    public function __construct(string $method, string $uri, $action)
     {
         $this->uri = $uri;
         $this->method = $method;
