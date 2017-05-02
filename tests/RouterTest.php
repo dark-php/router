@@ -4,16 +4,21 @@ namespace Darktec\Tests;
 use Darktec\Router\Router;
 use Darktec\Router\RouteCollection;
 use DI\Container;
+use Doctrine\Common\Cache\ApcCache;
 
 class RouterTest extends \PHPUnit_Framework_TestCase
 {
     public function testRouterInit()
     {
-        Router::init();
+        $builder = new \DI\ContainerBuilder();
+        $builder->setDefinitionCache(new ApcCache());
+        $builder->writeProxiesToFile(true, 'tmp/proxies');
 
-        $this->assertInstanceOf(Container::class, Router::$container);
+        $container = $builder->build();
 
-        $routeCollection = Router::$container->get('routeCollection');
+        Router::init($container);
+
+        $routeCollection = $container->get('routeCollection');
         $this->assertInstanceOf(RouteCollection::class, $routeCollection);
 
         return $routeCollection;

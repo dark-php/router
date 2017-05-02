@@ -1,8 +1,5 @@
 <?php
 namespace Darktec\Router;
-
-use Doctrine\Common\Cache\ApcCache;
-
 class Router
 {
     public static $container;
@@ -56,12 +53,9 @@ class Router
     /**
      *
      */
-    public static function init() {
-        $builder = new \DI\ContainerBuilder();
-        $builder->setDefinitionCache(new ApcCache());
-        $builder->writeProxiesToFile(true, 'tmp/proxies');
+    public static function init($container) {
 
-        self::$container = $builder->build();
+        self::$container = $container;
         self::$container->set('routeCollection', new RouteCollection());
     }
 
