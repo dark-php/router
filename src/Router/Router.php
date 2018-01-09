@@ -47,7 +47,7 @@ class Router
             }
 
         }
-        throw new \Exception;
+        throw new \Exception('Route does not exist');
     }
 
     /**
