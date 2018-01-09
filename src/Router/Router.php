@@ -31,7 +31,7 @@ class Router
         foreach (self::$container->get('routeCollection')->items as $route) {
             // CHeck method
             if ($route->method != $method) {
-                break;
+                continue;
             }
 
             // Check for / route
