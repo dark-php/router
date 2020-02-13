@@ -9,28 +9,28 @@ class Route
      *
      * @var string
      */
-    public $uri;
+    public string $uri;
 
     /**
      * The HTTP method for the route
      *
      * @var string
      */
-    public $method;
+    public string $method;
 
     /**
      * The callback action for the route
      *
      * @var string
      */
-    public $action;
+    public string $action;
 
     /**
      * The regular expression for the route
      *
      * @var string
      */
-    public $regex;
+    public string $regex;
 
 
     /**
@@ -67,7 +67,7 @@ class Route
         $this->regex = '/^'.$regex.'$/';
     }
 
-    public function __call($name, $arguments): mixed
+    public function __call($name, $arguments)
     {
         if(is_callable(array($this, $name))) {
             return call_user_func_array($this->action, $arguments);
