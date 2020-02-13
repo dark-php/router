@@ -19,7 +19,7 @@
     }
   ],
   "require": {
-    "php": ">=7",
+    "php": ">=7.4",
     "darktec/util": "1.0.*",
     "php-di/php-di": "^5.1",
     "doctrine/cache": "1.0"
