@@ -1,7 +1,7 @@
 {
   "name": "darktec/router",
   "type": "library",
-  "description": "Routing package for PHP 7",
+  "description": "Routing package for PHP 8",
   "keywords": [
     "routing",
     "route",
@@ -19,13 +19,13 @@
     }
   ],
   "require": {
-    "php": ">=7.4",
+    "php": ">=8.0",
     "darktec/util": "1.0.*",
-    "php-di/php-di": "^5.1",
-    "doctrine/cache": "1.0"
+    "php-di/php-di": "^7.0",
+    "doctrine/cache": "2.2.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "5.0.*"
+    "phpunit/phpunit": "^10.0"
   },
   "autoload": {
     "psr-4": {

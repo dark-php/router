@@ -13,7 +13,7 @@ class Router
      * @return void
      * @throws \DI\NotFoundException
      */
-    public static function map(string $method, string $uri, $action) {
+    public static function map(string $method, $uri, $action) {
         $route = new Route($method, $uri, $action);
         self::$container->get('routeCollection')->add($route);
     }

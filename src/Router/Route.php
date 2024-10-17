@@ -23,7 +23,7 @@ class Route
      *
      * @var string
      */
-    public string $action;
+    public $action;
 
     /**
      * The regular expression for the route
@@ -40,7 +40,7 @@ class Route
      * @param string $uri
      * @param mixed $action
      */
-    public function __construct(string $method, string $uri, $action)
+    public function __construct(string $method, $uri, $action)
     {
         $this->uri = $uri;
         $this->method = $method;

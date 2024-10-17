@@ -13,6 +13,6 @@ class RouteCollection extends Collection
      *
      * @var \Darktec\Router\Route[]
      */
-    public array $items = array();
+    public $items = array();
 
 }

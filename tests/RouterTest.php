@@ -3,15 +3,14 @@ namespace Darktec\Tests;
 
 use Darktec\Router\Router;
 use Darktec\Router\RouteCollection;
-use DI\Container;
-use Doctrine\Common\Cache\ApcCache;
+use PHPUnit\Framework\TestCase;
 
-class RouterTest extends \PHPUnit_Framework_TestCase
+class RouterTest extends TestCase
 {
     public function testRouterInit()
     {
         $builder = new \DI\ContainerBuilder();
-        $builder->setDefinitionCache(new ApcCache());
+        $builder->enableDefinitionCache();
         $builder->writeProxiesToFile(true, 'tmp/proxies');
 
         $container = $builder->build();
