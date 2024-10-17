@@ -18,7 +18,9 @@ class RouteCallback
             $arr = explode('@', $action);
 
             $container = new Container();
-            $container->call($arr[0] . "::index");
+            $res = $container->call($arr[0] . "::index");
+
+            if (gettype($res) === "string") echo $res;
             
         } else {
             $action();

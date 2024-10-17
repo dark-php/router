@@ -1,5 +1,5 @@
 <?php
-namespace Darktec\Router\Http;
+namespace Darktec\Http;
 
 
 use Darktec\Error\InvalidKeyException;
@@ -9,31 +9,31 @@ class Request
     /**
      * Request body parameters ($_POST).
      *
-     * @var \Darktec\Util\Map
+     * @var \Darktec\Util\Collection
      */
     private static $post;
     /**
      * Query string parameters ($_GET).
      *
-     * @var \Darktec\Util\Map
+     * @var \Darktec\Util\Collection
      */
     private static $get;
     /**
      * Server parameters ($_SERVER).
      *
-     * @var \Darktec\Util\Map
+     * @var \Darktec\Util\Collection
      */
     private static $server;
     /**
      * Uploaded files ($_FILES).
      *
-     * @var \Darktec\Util\Map
+     * @var \Darktec\Util\Collection
      */
     private static $files;
     /**
      * Cookies ($_COOKIE).
      *
-     * @var \Darktec\Util\Map
+     * @var \Darktec\Util\Collection
      */
     private static $cookies;
 

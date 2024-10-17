@@ -1,6 +1,6 @@
 <?php
-namespace Darktec\Router\Http;
+namespace Darktec\Http;
 
-use Darktec\Util\Map;
+use Darktec\Util\Collection;
 
-class ParameterBag extends Map {}
+class ParameterBag extends Collection {}
