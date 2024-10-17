@@ -1,5 +1,6 @@
 <?php
 namespace Darktec\Router;
+use DI\Container;
 class Router
 {
     public static $container;
@@ -53,9 +54,9 @@ class Router
     /**
      *
      */
-    public static function init($container) {
+    public static function init($container = null) {
 
-        self::$container = $container;
+        self::$container = $container ? $container : new Container();
         self::$container->set('routeCollection', new RouteCollection());
     }
 

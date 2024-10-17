@@ -1,5 +1,6 @@
 <?php
 namespace Darktec\Router;
+use DI\Container;
 
 
 class RouteCallback
@@ -16,11 +17,9 @@ class RouteCallback
             // Create array from action
             $arr = explode('@', $action);
 
-            $class = new \ReflectionClass($arr[0]);
-            $method = $class->getMethod($arr[1]);
-            if ($method !== null) {
-                $method->invoke($class->newInstance());
-            }
+            $container = new Container();
+            $container->call($arr[0] . "::index");
+            
         } else {
             $action();
         }
