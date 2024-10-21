@@ -20,7 +20,7 @@
   ],
   "require": {
     "php": ">=8.0",
-    "darktec/util": "1.0.*",
+    "darktec/util": "1.0.0-alpha.1",
     "php-di/php-di": "^7.0",
     "doctrine/cache": "2.2.0"
   },
