@@ -1,5 +1,5 @@
 {
-  "name": "darktec/router",
+  "name": "darkphp/router",
   "type": "library",
   "description": "Routing package for PHP 8",
   "keywords": [
@@ -8,7 +8,7 @@
     "router",
     "php7"
   ],
-  "homepage": "https://github.com/darktec/router",
+  "homepage": "https://github.com/dark-php/router",
   "license": "MIT",
   "authors": [
     {
@@ -20,7 +20,7 @@
   ],
   "require": {
     "php": ">=8.0",
-    "darktec/util": "1.0.*",
+    "darkphp/util": "1.0.*",
     "php-di/php-di": "^7.0",
     "doctrine/cache": "2.2.0"
   },
@@ -29,7 +29,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Darktec\\": "src"
+      "DarkPHP\\": "src"
     }
   },
   "scripts": {

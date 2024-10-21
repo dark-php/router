@@ -1,5 +1,5 @@
 <?php
-namespace Darktec\Router;
+namespace DarkPHP\Router;
 
 class Route
 {

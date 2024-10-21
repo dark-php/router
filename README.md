@@ -10,7 +10,7 @@
 To install router as a Composer package run:
 
 ``` bash
-$ composer require darktec/router
+$ composer require darkphp/router
 ```
 
 ## Usage
@@ -48,18 +48,18 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details
 
 ## Credits
 
-- [DarkTec][link-author]
+- [DarkPHP][link-author]
 - [All Contributors][link-contributors]
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/darktec/router.svg?style=flat-square
-[ico-license]: https://img.shields.io/packagist/l/darktec/router.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/darktec/router.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/darkphp/router.svg?style=flat-square
+[ico-license]: https://img.shields.io/packagist/l/darkphp/router.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/darkphp/router.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/darktec/router
-[link-downloads]: https://packagist.org/packages/darktec/router
-[link-author]: https://github.com/darktec
+[link-packagist]: https://packagist.org/packages/darkphp/router
+[link-downloads]: https://packagist.org/packages/darkphp/router
+[link-author]: https://github.com/dark-php
 [link-contributors]: ../../contributors

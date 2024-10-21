@@ -1,6 +1,6 @@
 # Changelog
 
-All Notable changes to `darktec\router` will be documented in this file
+All Notable changes to `DarkPHP\Router` will be documented in this file
 
 ### Added
 - Nothing

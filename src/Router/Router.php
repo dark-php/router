@@ -1,7 +1,7 @@
 <?php
-namespace Darktec\Router;
+namespace DarkPHP\Router;
 
-use Darktec\Http\Request;
+use DarkPHP\Http\Request;
 use DI\Container;
 class Router
 {
