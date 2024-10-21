@@ -1,5 +1,5 @@
 <?php
-namespace DarkPHP\Router;
+namespace DarkTec\Router;
 use DI\Container;
 
 

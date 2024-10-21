@@ -1,7 +1,7 @@
 <?php
-namespace DarkPHP\Router;
+namespace Darktec\Router;
 
-use DarkPHP\Util\Collection;
+use Darktec\Util\Collection;
 
 /**
  * @inheritdoc
@@ -11,7 +11,7 @@ class RouteCollection extends Collection
     /**
      * The array of routes
      *
-     * @var \DarkPHP\Router\Route[]
+     * @var \Darktec\Router\Route[]
      */
     public $items = array();
 

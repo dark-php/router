@@ -1,5 +1,5 @@
 <?php
-namespace DarkPHP\Http;
+namespace DarkTec\Http;
 
 interface MiddlewareInterface
 {

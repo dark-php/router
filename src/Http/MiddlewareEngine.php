@@ -1,7 +1,7 @@
 <?php
 
 
-namespace DarkPHP\Http;
+namespace DarkTec\Http;
 
 
 class MiddlewareEngine

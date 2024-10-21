@@ -1,8 +1,8 @@
 <?php
-namespace DarkPHP\Tests;
+namespace Darktec\Tests;
 
-use DarkPHP\Router\Router;
-use DarkPHP\Router\RouteCollection;
+use Darktec\Router\Router;
+use Darktec\Router\RouteCollection;
 use PHPUnit\Framework\TestCase;
 
 class RouterTest extends TestCase

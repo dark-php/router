@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkPHP\Http;
+namespace DarkTec\Http;
 
 abstract class Middleware implements MiddlewareInterface
 {
