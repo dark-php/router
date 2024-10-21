@@ -32,6 +32,8 @@ class Route
      */
     public string $regex;
 
+    public $middleware;
+
 
     /**
      * Route constructor.
@@ -40,11 +42,12 @@ class Route
      * @param string $uri
      * @param mixed $action
      */
-    public function __construct(string $method, $uri, $action)
+    public function __construct(string $method, $uri, $action, $middleware)
     {
         $this->uri = $uri;
         $this->method = $method;
         $this->action = $action;
+        $this->middleware = $middleware;
 
         $this->regex();
     }

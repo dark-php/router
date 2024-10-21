@@ -6,20 +6,21 @@ use DI\Container;
 class RouteCallback
 {
     /**
-     * Calls the given controller@method using Reflection
+     * Calls the given method
      *
      * @param string $action The action to call
      */
-    public function __construct($action)
+    public function __construct($container, $action)
     {
         // Check if action is string or function
         if (is_string($action)) {
             // Create array from action
             $arr = explode('@', $action);
+            
+            // Get the class from DI container and call function
+            $res = $container->call($arr[0] . "::" . $arr[1]);
 
-            $container = new Container();
-            $res = $container->call($arr[0] . "::index");
-
+            // Output the result if string
             if (gettype($res) === "string") echo $res;
             
         } else {

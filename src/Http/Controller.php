@@ -1,9 +1,8 @@
 <?php
-namespace Darktec\Router\Http;
+namespace Darktec\Http;
 
 class Controller {
 
     public function __construct() {
-        Request::init();
     }
 }

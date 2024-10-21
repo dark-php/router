@@ -1,5 +1,7 @@
 <?php
 namespace Darktec\Router;
+
+use Darktec\Http\Request;
 use DI\Container;
 class Router
 {
@@ -14,9 +16,9 @@ class Router
      * @return void
      * @throws \DI\NotFoundException
      */
-    public static function map(string $method, $uri, $action) {
-        $route = new Route($method, $uri, $action);
-        self::$container->get('routeCollection')->add($route);
+    public static function map(string $method, $uri, $action, $middleware = []) {
+        $route = new Route($method, $uri, $action, $middleware);
+        self::$container->get('routeCollection')->add($uri, $route);
     }
 
     /**
@@ -35,15 +37,20 @@ class Router
                 continue;
             }
 
+            $engine = self::$container->get('middlewareEngine');
+            $engine->addMiddleware($route->middleware);
+            $engine->run();
+
             // Check for / route
             if ($route->uri == '/' && $uri == '/') {
-                new RouteCallback($route->action);
+                new RouteCallback(self::$container, $route->action);
                 return;
             }
+
             $reg = $route->regex;
             preg_match($reg, $uri, $arr);
             if (count($arr) > 0) {
-                new RouteCallback($route->action);
+                new RouteCallback(self::$container, $route->action);
                 return;
             }
 

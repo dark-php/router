@@ -1,142 +1,49 @@
 <?php
 namespace Darktec\Http;
 
-
-use Darktec\Error\InvalidKeyException;
+use stdClass;
 
 class Request
 {
-    /**
-     * Request body parameters ($_POST).
-     *
-     * @var \Darktec\Util\Collection
-     */
-    private static $post;
-    /**
-     * Query string parameters ($_GET).
-     *
-     * @var \Darktec\Util\Collection
-     */
-    private static $get;
-    /**
-     * Server parameters ($_SERVER).
-     *
-     * @var \Darktec\Util\Collection
-     */
-    private static $server;
-    /**
-     * Uploaded files ($_FILES).
-     *
-     * @var \Darktec\Util\Collection
-     */
-    private static $files;
-    /**
-     * Cookies ($_COOKIE).
-     *
-     * @var \Darktec\Util\Collection
-     */
-    private static $cookies;
+    private $data;
 
-    /**
-     * Initialises the Request and sets attributes
-     */
-    public static function init()
+    public function __construct()
     {
-        self::$post = new ParameterBag();
-        foreach ($_POST as $k => $v) {
-            self::$post->add(strtolower($k), $v);
-        }
-        self::$get = new ParameterBag();
-        foreach ($_GET as $k => $v) {
-            self::$get->add(strtolower($k), $v);
-        }
-        self::$server = new ParameterBag();
-        foreach ($_SERVER as $k => $v) {
-            self::$server->add(strtolower($k), $v);
-        }
-        self::$files = new ParameterBag();
-        foreach ($_FILES as $k => $v) {
-            self::$files->add(strtolower($k), $v);
-        }
-        self::$cookies = new ParameterBag();
-        foreach ($_COOKIE as $k => $v) {
-            self::$cookies->add(strtolower($k), $v);
+        $this->data = new stdClass;
+        $this->setData();
+    }
+
+    private function setData(){
+        foreach ($_REQUEST as $key => $value) {
+            if($this->method() === 'get'){
+                //this makes is dynamically available
+                $this->$key = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                //this collects it
+                $this->data->$key = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+            }
+            elseif ($this->method() === 'post') {
+                foreach ($_POST as $key => $value) {
+                    $this->$key = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                    $this->data->$key = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                }
+            }else{
+                $this->$key = $value;
+                $this->data->$key = $value;
+            }
         }
     }
 
-    /**
-     * Gets a value from the post ParameterBag
-     *
-     * @param string $key
-     * @return string
-     */
-    public static function post(string $key)
-    {
-        try {
-            return self::$post->get(strtolower($key));
-        } catch (InvalidKeyException $e) {
-            die($e);
-        }
+    public function data($x = null){
+        return $x?$this->data->$x:$this->data;
     }
 
-    /**
-     * Gets a value from the get ParameterBag
-     *
-     * @param string $key
-     * @return string
-     */
-    public static function get(string $key)
+    public function method()
     {
-        try {
-            return self::$get->get(strtolower($key));
-        } catch (InvalidKeyException $e) {
-            die($e);
-        }
+        return strtolower($_SERVER['REQUEST_METHOD']);
     }
 
-    /**
-     * Gets a value from the server ParameterBag
-     *
-     * @param string $key
-     * @return string
-     */
-    public static function server(string $key)
+    public function path()
     {
-        try {
-            return self::$server->get(strtolower($key));
-        } catch (InvalidKeyException $e) {
-            die($e);
-        }
+        return strtok($_SERVER["REQUEST_URI"], '?');
     }
-
-    /**
-     * Gets a value from the files ParameterBag
-     *
-     * @param string $key
-     * @return string
-     */
-    public static function files(string $key)
-    {
-        try {
-            return self::$files->get(strtolower($key));
-        } catch (InvalidKeyException $e) {
-            die($e);
-        }
-    }
-
-    /**
-     * Gets a value from the cookies ParameterBag
-     *
-     * @param string $key
-     * @return string
-     */
-    public static function cookies(string $key)
-    {
-        try {
-            return self::$cookies->get(strtolower($key));
-        } catch (InvalidKeyException $e) {
-            die($e);
-        }
-    }
-
 }
