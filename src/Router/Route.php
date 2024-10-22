@@ -53,9 +53,9 @@ class Route
      * @param  array|string|callable|null  $action
      * @return \Illuminate\Routing\Route
      */
-    public static function get($uri, $action = null)
+    public static function get($uri, $action = null, $middleware = [])
     {
-        return self::addRoute('GET', $uri, $action);
+        return self::addRoute('GET', $uri, $action, $middleware);
     }
 
     /**
@@ -65,9 +65,9 @@ class Route
      * @param  array|string|callable|null  $action
      * @return \Illuminate\Routing\Route
      */
-    public static function post($uri, $action = null)
+    public static function post($uri, $action = null, $middleware = [])
     {
-        return self::addRoute('POST', $uri, $action);
+        return self::addRoute('POST', $uri, $action, $middleware);
     }
 
     /**
@@ -77,9 +77,9 @@ class Route
      * @param  array|string|callable|null  $action
      * @return \Illuminate\Routing\Route
      */
-    public static function put($uri, $action = null)
+    public static function put($uri, $action = null, $middleware = [])
     {
-        return self::addRoute('PUT', $uri, $action);
+        return self::addRoute('PUT', $uri, $action, $middleware);
     }
 
     /**
@@ -89,9 +89,9 @@ class Route
      * @param  array|string|callable|null  $action
      * @return \Illuminate\Routing\Route
      */
-    public static function patch($uri, $action = null)
+    public static function patch($uri, $action = null, $middleware = [])
     {
-        return self::addRoute('PATCH', $uri, $action);
+        return self::addRoute('PATCH', $uri, $action, $middleware);
     }
 
     /**
@@ -101,9 +101,9 @@ class Route
      * @param  array|string|callable|null  $action
      * @return \Illuminate\Routing\Route
      */
-    public static function delete($uri, $action = null)
+    public static function delete($uri, $action = null, $middleware = [])
     {
-        return self::addRoute('DELETE', $uri, $action);
+        return self::addRoute('DELETE', $uri, $action, $middleware);
     }
     
     /**
@@ -133,13 +133,17 @@ class Route
 
     public function group($routes) {
         foreach ($routes as $route) {
-            $route->middleware = $this->middleware;
+            $route->middleware = array_merge($this->middleware, $route->middleware);
             Container::getInstance()->get('routeCollection')->add($route->method . ' ' . $route->uri, $route);
         }
     }
 
-    public static function addRoute($method, $uri, $action) {
-        $route = new Route($method, $uri, $action);
+    public static function addRoute($method, $uri, $action, $middleware) {
+        if (is_string($middleware)) {
+            $middleware = [$middleware];
+        }
+
+        $route = new Route($method, $uri, $action, $middleware);
         Container::getInstance()->get('routeCollection')->add($method . ' ' .$uri, $route);
         return $route;
     }
