@@ -2,8 +2,6 @@
 
 namespace DarkTec\Router;
 
-use DarkTec\Starter\Helpers\Container;
-
 class Router
 {
     public static $container;
@@ -66,10 +64,10 @@ class Router
     /**
      *
      */
-    public static function init($container = null)
+    public static function init($container)
     {
 
-        self::$container = $container ? $container : Container::getInstance();
+        self::$container = $container;
         self::$container->set('routeCollection', new RouteCollection());
     }
 }
