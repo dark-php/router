@@ -1,7 +1,7 @@
 <?php
 namespace DarkTec\Router;
 
-use DarkTec\Starter\Helpers\Container;
+use DarkTec\Helpers\Container;
 
 class Route
 {
